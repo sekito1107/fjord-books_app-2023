@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    attributes:
+      book:
+        title: "題名:"
+        memo: "メモ:"
+        author: "著者:"
+        picture: "写真:"
+  normal:
+    show: "本を見る"
+    back: "一覧に戻る"
+  books:
+    index:
+      title: "書籍一覧"
+      new: "新しく本を登録する"
+    new:
+      title: "新しく本を登録する"
+    show:
+      delete: "この本を削除する"
+      edit: "この本を編集する"
