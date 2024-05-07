@@ -185,6 +185,7 @@ ja:
     common:
       show: "この%{name}を表示"
       edit: "この%{name}を編集"
+      edit_user: ユーザー情報編集
       destroy: "この%{name}を削除"
       new: "%{name}の新規作成"
       back: "%{name}の一覧に戻る"
@@ -193,6 +194,9 @@ ja:
       title_new: "%{name}の新規作成"
       title_edit: "%{name}の編集"
       error: エラー
+      new: 新規登録
+      logout: ログアウト
+      update: 更新
       validation_error: "%{errors}があるため、この%{name}は保存できませんでした"
     pagination:
       first: '« 最初'

@@ -14,6 +14,23 @@
 </div>
 
 <%= paginate @books %>
+<% if current_user %>
+  <li>
+    <%= link_to t('views.common.title_index', name: User.model_name.human.downcase), users_path %>
+  </li>
+  <li>
+    <%= link_to t('views.common.title_edit', name: User.model_name.human.downcase), "users/edit" %>
+  <li>
+    <%= link_to t('views.common.logout'), destroy_user_session_path, data: { turbo_method: :delete } %>
+  </li>
+<% else %>
+  <li>
+    <%= link_to "ユーザー新規登録", new_user_registration_path %>
+  </li>
+  <li>
+    <%= link_to "ログイン", new_user_session_path %>
+  </li>
+<% end %>
 
 <nav class="page-nav">
     <%= link_to t('views.common.new', name: Book.model_name.human.downcase), new_book_path %>
