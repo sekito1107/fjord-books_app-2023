@@ -1,20 +1,26 @@
-ja:
+en:
   activerecord:
+    models:
+      book: "book"
     attributes:
       book:
-        title: "Title:"
-        memo: "Memo:"
-        author: "Author:"
-        picture: "Picture:"
+        title: "Title"
+        memo: "Memo"
+        author: "Author"
+        picture: "Picture"
   normal:
-    show: "Show this book"
-    back: "Back to books"
+    show: "%Show {name}"
+    back: "%Back to {name} list"
+    edit: "%Edit {name}"
+    delete: "Delete %{name}"
+    new: "New %{name}"
   books:
     index:
       title: "Books"
-      new: "New Book"
     new:
       title: "New Book"
-    show:
-      delete: "Destroy this books"
-      edit: "Edit this book"
+  controllers:
+    normal:
+      notice_create: "Successfully created %{name}."
+      notice_destroy: "Successfully deleted %{name}."
+      notice_update: "Successfully updated %{name}."
