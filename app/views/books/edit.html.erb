@@ -5,6 +5,6 @@
 <br>
 
 <nav class="page-nav">
-  <%= link_to t('normal.show'), @book %> |
-  <%= link_to t('normal.back'), books_path %>
+  <%= link_to t('normal.show', name: Book.model_name.human), @book %> |
+  <%= link_to t('normal.back', name: Book.model_name.human), books_path %>
 </nav>
