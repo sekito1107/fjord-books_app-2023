@@ -85,4 +85,6 @@ end
 gem 'carrierwave'
 gem 'devise'
 gem 'devise-i18n'
+gem 'htmlbeautifier'
 gem 'kaminari'
+gem 'rails_autolink'
