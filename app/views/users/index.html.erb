@@ -2,7 +2,7 @@
   <% @users.each do |user| %>
     <div class="index-item">
       <%= render user %>
-     <%= link_to t('ユーザーの詳細を表示'), user %>
+     <%= link_to t('views.common.show', name: User.model_name.human.downcase), user %>
     </div>
   <% end %>
 </div>

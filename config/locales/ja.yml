@@ -186,6 +186,7 @@ ja:
       show: "この%{name}を表示"
       edit: "この%{name}を編集"
       edit_user: ユーザー情報編集
+      create_user: ユーザ新規登録
       destroy: "この%{name}を削除"
       new: "%{name}の新規作成"
       back: "%{name}の一覧に戻る"
@@ -195,6 +196,7 @@ ja:
       title_edit: "%{name}の編集"
       error: エラー
       new: 新規登録
+      login: ログイン
       logout: ログアウト
       update: 更新
       validation_error: "%{errors}があるため、この%{name}は保存できませんでした"
