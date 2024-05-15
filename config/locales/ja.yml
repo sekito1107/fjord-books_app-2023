@@ -217,4 +217,4 @@ ja:
       edit:
         title: "アカウント編集"
       profile_fields:
-        now_image: "現在の画像"
+        current_image: "現在の画像"
