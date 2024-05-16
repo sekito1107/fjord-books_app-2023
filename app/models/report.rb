@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Report < ApplicationRecord
-  after_save :mention_confirmation
+  after_save :build_mentions
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
 
@@ -23,13 +23,17 @@ class Report < ApplicationRecord
 
   private
 
-  def mention_confirmation
-    active_mentions.each(&:destroy)
+  def build_mentions
+    reset_active_mentions
     return unless (match_data = %r{localhost:3000/reports/(\d+)}.match(content))
 
     mention = ReportMention.new
     mention.source_report_id = id
     mention.target_report_id = match_data[1].to_i
     mention.save
+  end
+
+  def reset_active_mentions
+    active_mentions.each(&:destroy)
   end
 end
