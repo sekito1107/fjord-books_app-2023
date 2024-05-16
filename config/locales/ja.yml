@@ -1,0 +1,26 @@
+ja:
+  activerecord:
+    models:
+      book: "本"
+    attributes:
+      book:
+        title: "題名"
+        memo: "メモ"
+        author: "著者"
+        picture: "写真"
+  normal:
+    show: "%{name}を見る"
+    back: "%{name}一覧に戻る"
+    edit: "%{name}を編集する"
+    delete: "%{name}を削除する"
+    new: "%{name}を登録する"
+  books:
+    index:
+      title: "書籍一覧"
+    new:
+      title: "新しく本を登録する"
+  controllers:
+    normal:
+      notice_create: "%{name}を作成しました。"
+      notice_destroy: "%{name}を削除しました。"
+      notice_update: "%{name}を編集しました。"
