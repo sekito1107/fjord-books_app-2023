@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   validate :format_avatar
 
-  def format_avatar
+  def check_avatar
     errors.add(:avatar, 'プロフィール画像はjpg,png,gifの中から選択してください') if avatar.attached? && !avatar.content_type.in?(%w[image/jpeg image/png image/gif])
   end
 end
