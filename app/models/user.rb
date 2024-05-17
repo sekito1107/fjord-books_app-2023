@@ -5,9 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one_attached :avatar
 
-  validate :format_avatar
+  validate :validate_avatar_format
 
-  def check_avatar
+  def validate_avatar_format
     errors.add(:avatar, 'プロフィール画像はjpg,png,gifの中から選択してください') if avatar.attached? && !avatar.content_type.in?(%w[image/jpeg image/png image/gif])
   end
 end
