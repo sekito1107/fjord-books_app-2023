@@ -4,42 +4,67 @@ require 'application_system_test_case'
 
 class BooksTest < ApplicationSystemTestCase
   setup do
-    @book = books(:one)
+    sign_in
   end
 
-  test 'visiting the index' do
+  def set_book
+    @book = books(:dragon_ball)
+  end
+
+  test '本の一覧を表示する' do
     visit books_url
-    assert_selector 'h1', text: 'Books'
+    assert_text '本の一覧'
+    assert_text 'ドラゴンボール'
+    assert_text '嘘喰い'
+    assert_text '東京アンダーグラウンド'
   end
 
-  test 'should create book' do
+  test '本の新規登録' do
     visit books_url
-    click_on 'New book'
+    click_on '本の新規作成'
 
-    fill_in 'Memo', with: @book.memo
-    fill_in 'Title', with: @book.title
-    click_on 'Create Book'
+    fill_in 'タイトル', with: 'ダーウィンズゲーム'
+    fill_in 'メモ', with: '予測不能の極限異能力バトル'
+    fill_in '著者', with: 'FLIPFLOPs'
+    attach_file '画像', Rails.root.join('test/fixtures/files/darwins_game.jpg')
+    click_on '登録する'
 
-    assert_text 'Book was successfully created'
-    click_on 'Back'
+    assert_text '本が作成されました'
+    assert_text 'ダーウィンズゲーム'
+    assert_text '予測不能の極限異能力バトル'
+    assert find('img')['src'].end_with?('darwins_game.jpg')
   end
 
-  test 'should update Book' do
+  test '本にコメント' do
+    set_book
     visit book_url(@book)
-    click_on 'Edit this book', match: :first
+    fill_in 'comment[content]', with: '世界的に有名な漫画ですね'
+    click_on 'コメントする'
 
-    fill_in 'Memo', with: @book.memo
-    fill_in 'Title', with: @book.title
-    click_on 'Update Book'
-
-    assert_text 'Book was successfully updated'
-    click_on 'Back'
+    assert_text 'コメントが作成されました'
+    assert_text '世界的に有名な漫画ですね'
   end
 
-  test 'should destroy Book' do
+  test '本の編集' do
+    set_book
     visit book_url(@book)
-    click_on 'Destroy this book', match: :first
+    click_on 'この本を編集'
 
-    assert_text 'Book was successfully destroyed'
+    fill_in 'タイトル', with: 'スラムダンク'
+    fill_in 'メモ', with: 'スポーツ漫画屈指の傑作'
+    fill_in '著者', with: '井上雄彦'
+    click_on '更新する'
+
+    assert_text '本が更新されました'
+    assert_text 'スラムダンク'
+    assert_text 'スポーツ漫画屈指の傑作'
+    assert_text '井上雄彦'
+  end
+
+  test '本の削除' do
+    set_book
+    visit book_url(@book)
+    click_on 'この本を削除'
+    assert_text '本が削除されました。'
   end
 end
