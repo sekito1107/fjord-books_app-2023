@@ -3,7 +3,7 @@
 
   <% if commentable.comments.any? %>
     <% commentable.comments.each do |comment| %>
-    <p><strong><%= comment.user.name %></strong>: <%= comment.content %>: <%= comment.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+    <p><strong><%= comment.user.name.present? ? comment.user.name : comment.user.email %></strong>: <%= comment.content %>: <%= l comment.created_at %></p>
     <%= link_to t('views.common.destroy', name: Comment.model_name.human.downcase), polymorphic_path([commentable, comment]) , data: { turbo_confirm: t('views.common.destroy_confirm', name: Comment.model_name.human.downcase) , turbo_method: :delete } %> |
     <%= link_to t('views.common.edit', name: Comment.model_name.human.downcase), edit_polymorphic_path([commentable, comment]) %>
   <% end %>

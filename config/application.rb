@@ -17,5 +17,6 @@ module BooksApp
     # in config/environments, which are processed later.
     #
     config.time_zone = 'Tokyo'
+    config.i18n.default_locale = :ja
   end
 end
