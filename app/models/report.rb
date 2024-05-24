@@ -29,9 +29,9 @@ class Report < ApplicationRecord
     return unless (match_data = %r{localhost:3000/reports/(\d+)}.match(content))
 
     mention = ReportMention.new
-    mention.source_report_id = id
+    mention.source_report_id = user.find(id)
     mention.target_report_id = match_data[1].to_i
-    mention.save
+    mention.save!
   end
 
 end
