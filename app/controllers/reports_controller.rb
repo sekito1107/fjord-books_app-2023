@@ -25,12 +25,10 @@ class ReportsController < ApplicationController
     @report = Report.new(report_params)
     @report.user = current_user
 
-    respond_to do |format|
-      if @report.save
-        redirect_to report_url(@report), notice: t('controllers.common.notice_create', name: Report.model_name.human)
-      else
-        render :new, status: :unprocessable_entity
-      end
+    if @report.save
+      redirect_to report_url(@report), notice: t('controllers.common.notice_create', name: Report.model_name.human)
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
