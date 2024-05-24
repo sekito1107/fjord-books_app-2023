@@ -25,7 +25,7 @@ class Report < ApplicationRecord
   private
 
   def build_mentions
-    reset_active_mentions
+    active_mentions.destroy_all
     return unless (match_data = %r{localhost:3000/reports/(\d+)}.match(content))
 
     mention = ReportMention.new
@@ -34,7 +34,4 @@ class Report < ApplicationRecord
     mention.save
   end
 
-  def reset_active_mentions
-    active_mentions.each(&:destroy)
-  end
 end
