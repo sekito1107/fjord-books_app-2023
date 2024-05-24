@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Report < ApplicationRecord
-  after_save :build_mentions
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
 
@@ -12,6 +11,8 @@ class Report < ApplicationRecord
 
   validates :title, presence: true
   validates :content, presence: true
+
+  after_save :build_mentions
 
   def editable?(target_user)
     user == target_user
