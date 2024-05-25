@@ -3,7 +3,7 @@
   <%= render @report %>
 </div>
 <%= render 'shared/comments', commentable: @report %>
-<%= render 'shared/mentions', target_reports: @report.mentioned_reports %>
+<%= render 'mentions', target_reports: @report.mentioned_reports.order(:created_at, :id) %>
 <nav class="page-nav">
   <% if @report.editable?(current_user) %>
     <%= link_to t('views.common.edit', name: Report.model_name.human.downcase), edit_report_path(@report) %> |
