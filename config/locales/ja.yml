@@ -177,7 +177,7 @@ ja:
   time:
     am: 午前
     formats:
-      default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
+      default: "%Y/%m/%d %H:%M:%S"
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
@@ -186,6 +186,7 @@ ja:
       show: "この%{name}を表示"
       edit: "この%{name}を編集"
       destroy: "この%{name}を削除"
+      destroy_confirm: "この%{name}を削除してもよろしいですか？"
       new: "%{name}の新規作成"
       back: "%{name}の一覧に戻る"
       delete_confirm: よろしいですか？
@@ -196,6 +197,9 @@ ja:
       validation_error: "%{errors}があるため、この%{name}は保存できませんでした"
       title_show: "%{name}の詳細"
       sign_out: ログアウト
+      report_author: "作成者"
+      unknown_user: "不明なユーザー"
+      no_comments: "まだコメントがありません"
     pagination:
       first: '« 最初'
       last: '最後 »'
@@ -207,6 +211,10 @@ ja:
       notice_create: "%{name}が作成されました。"
       notice_update: "%{name}が更新されました。"
       notice_destroy: "%{name}が削除されました。"
+      alert_create: "%{name}が作成できませんでした。"
+      alert_destroy: "%{name}の削除に失敗しました。"
+      alert_auth: "%{name}を操作する権限がありません。"
+      alert_edit: "%{name}の更新に失敗しました"
   layouts:
     application:
       menu: メニュー
