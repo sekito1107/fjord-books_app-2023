@@ -12,8 +12,9 @@
 </div>
 
 <nav class="page-nav">
-  <%= link_to t('views.common.edit', name: Report.model_name.human.downcase), edit_report_path(@report) %> |
   <%= link_to t('views.common.back', name: Report.model_name.human.downcase), reports_path %>
-
+  <% if @report.user == current_user %>
+  | <%= link_to t('views.common.edit', name: Report.model_name.human.downcase), edit_report_path(@report) %>
   <%= button_to t('views.common.destroy', name: Report.model_name.human.downcase), @report, method: :delete %>
+  <% end %>
 </nav>
