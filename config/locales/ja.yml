@@ -214,6 +214,7 @@ ja:
       alert_create: "%{name}が作成できませんでした。"
       alert_destroy: "%{name}の削除に失敗しました。"
       alert_auth: "%{name}を操作する権限がありません。"
+      alert_edit: "%{name}の更新に失敗しました"
   layouts:
     application:
       menu: メニュー
