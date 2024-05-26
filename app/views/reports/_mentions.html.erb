@@ -1,0 +1,8 @@
+<h2><%= t('.mentions') %></h2>
+<% if target_reports.any? %>
+  <% target_reports.each do |report| %>
+    <%= link_to report.title, report_path(report) %><br>
+  <% end %>
+<% else %>
+  <%= t('.no_mentions') %>
+<% end %>
