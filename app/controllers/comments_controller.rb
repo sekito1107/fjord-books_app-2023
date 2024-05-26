@@ -16,7 +16,9 @@ class CommentsController < ApplicationController
     redirect_to @commentable
   end
 
-  def edit; end
+  def edit
+    redirect_to @commentable, alert: t('controllers.common.alert_auth', name: Comment.model_name.human) if @comment.user != current_user
+  end
 
   def update
     if @comment.user == current_user && @comment.update(comment_params)
