@@ -28,9 +28,7 @@ class Report < ApplicationRecord
     active_mentions.destroy_all
     return unless (match_data = %r{localhost:3000/reports/(\d+)}.match(content))
 
-    mention = ReportMention.new
-    mention.source_report_id = user.reports.find(id).id
-    mention.target_report_id = match_data[1].to_i
+    mention = active_mentions.build(source_report_id: id, target_report_id: match_data[1].to_i)
     mention.save!
   end
 
