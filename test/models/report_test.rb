@@ -28,5 +28,37 @@ class ReportTest < ActiveSupport::TestCase
 
     assert_equal [bob_report], alice_report.mentioned_reports
     assert_equal [alice_report], bob_report.mentioning_reports
+
+    # 更新時に関連が維持されるかの確認
+    bob_report.update(title: '言及維持テスト', content: "http://localhost:3000/reports/#{alice_report.id}")
+    bob_report.reload
+    alice_report.reload
+
+    assert_equal [bob_report], alice_report.mentioned_reports
+    assert_equal [alice_report], bob_report.mentioning_reports
+
+    # 更新時に関連が削除されるかの確認
+    bob_report.update(title: '言及テスト', content: '言及を無くしました')
+    bob_report.reload
+    alice_report.reload
+
+    assert_equal [], alice_report.mentioned_reports
+    assert_equal [], bob_report.mentioning_reports
+
+    # 削除テスト前の準備
+
+    bob_report.update(title: '言及テスト', content: "http://localhost:3000/reports/#{alice_report.id}")
+    bob_report.reload
+    alice_report.reload
+
+    assert_equal [bob_report], alice_report.mentioned_reports
+    assert_equal [alice_report], bob_report.mentioning_reports
+
+    # 削除時に関連が正しく削除されるかのテスト
+
+    bob_report.destroy
+    alice_report.reload
+    assert_equal [], alice_report.mentioned_reports
+
   end
 end

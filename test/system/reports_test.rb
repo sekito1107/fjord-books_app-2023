@@ -91,5 +91,7 @@ class ReportsTest < ApplicationSystemTestCase
     visit report_url(report)
     click_on 'この日報を削除'
     assert_text '日報が削除されました。'
+    assert_no_text 'aliceです'
+    assert_no_text 'こんにちは'
   end
 end
