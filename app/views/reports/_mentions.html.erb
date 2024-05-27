@@ -1,5 +1,5 @@
 <h2><%= t('.mentions') %></h2>
-<% if target_reports.any? %>
+<% if target_reports.present? %>
   <% target_reports.each do |report| %>
     <%= link_to report.title, report_path(report) %><br>
   <% end %>
