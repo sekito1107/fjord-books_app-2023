@@ -26,12 +26,11 @@ class Report < ApplicationRecord
 
   def build_mentions
     active_mentions.destroy_all
-    return unless (report_ids = content.scan(%r{(?<=reports/)\d+}).presence)
+    return unless (report_ids = content.scan(%r{(?<=http://localhost:3000/reports/)\d+}).presence)
 
     report_ids.delete(id.to_s)
     report_ids.each do |report_id|
-      mention = active_mentions.build(target_report_id: report_id.to_i)
-      mention.save!
+      mention = active_mentions.create!(target_report_id: report_id.to_i)
     end
   end
 end
