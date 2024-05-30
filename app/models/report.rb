@@ -28,9 +28,11 @@ class Report < ApplicationRecord
     active_mentions.destroy_all
     return unless (report_ids = content.scan(%r{(?<=http://localhost:3000/reports/)\d+}).presence)
 
-    report_ids.delete(id.to_s)
-    report_ids.each do |report_id|
-      mention = active_mentions.create!(target_report_id: report_id.to_i)
+    existing_report_ids = Report.where(id: report_ids).pluck(:id).map(&:to_s)
+    report_ids.select! { |report_id| existing_report_ids.include?(report_id) && report_id != id.to_s }
+
+    report_ids.uniq.each do |report_id|
+      active_mentions.create!(target_report_id: report_id.to_i)
     end
   end
 end
