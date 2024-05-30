@@ -14,6 +14,16 @@
 </div>
 
 <%= paginate @books %>
+<div>
+  <li>
+    <%= link_to t('views.common.title_index', name: User.model_name.human.downcase), users_path %>
+  </li>
+  <li>
+    <%= link_to t('views.common.title_edit', name: User.model_name.human.downcase), "users/edit" %>
+  <li>
+    <%= link_to t('views.common.logout'), destroy_user_session_path, data: { turbo_method: :delete } %>
+  </li>
+</div>
 
 <nav class="page-nav">
     <%= link_to t('views.common.new', name: Book.model_name.human.downcase), new_book_path %>
