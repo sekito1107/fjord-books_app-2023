@@ -12,7 +12,7 @@ class Report < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
 
-  after_save :build_mentions
+  after_save :create_mentions
 
   def editable?(target_user)
     user == target_user
@@ -24,14 +24,13 @@ class Report < ApplicationRecord
 
   private
 
-  def build_mentions
+  def create_mentions
     active_mentions.destroy_all
     report_ids = content.scan(%r{(?<=http://localhost:3000/reports/)\d+})
 
-    additional_target_report_ids = Report.where(id: report_ids).where.not(user:).pluck(:id).map(&:to_s)
-
-    additional_target_report_ids.uniq.each do |report_id|
-      active_mentions.create!(target_report_id: report_id.to_i)
+    target_report_ids = Report.where(id: report_ids).where.not(id:).pluck(:id)
+    target_report_ids.each do |report_id|
+      active_mentions.create!(target_report_id: report_id)
     end
   end
 end
