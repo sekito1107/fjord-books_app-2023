@@ -211,6 +211,10 @@ ja:
     menu:
       menu: メニュー
       sign_in_as: "%{user} としてログイン中"
+  reports:
+    mentions:
+      mentions: この日報に言及している日報
+      no_mentions: まだ言及している日報はありません
   shared:
     comments:
       create: コメントする

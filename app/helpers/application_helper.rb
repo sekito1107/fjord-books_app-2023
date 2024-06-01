@@ -16,6 +16,7 @@ module ApplicationHelper
   end
 
   def format_content(content)
-    safe_join(content.split("\n"), tag.br)
+    new_content = safe_join(content.split("\n"), tag.br)
+    simple_format(auto_link(new_content))
   end
 end
