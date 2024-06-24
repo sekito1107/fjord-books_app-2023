@@ -1,9 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  memo: MyText
+dragon_ball:
+  title: ドラゴンボール
+  memo: 言わずと知れた名作
+  author: 鳥山明
 
-two:
-  title: MyString
-  memo: MyText
+usogui:
+  title: 嘘喰い
+  memo: 嘘を見破れなければ即死の騙し合いゲーム開幕！
+  author: 迫稔雄
+
+tokyo_under_ground:
+  title: 東京アンダーグラウンド
+  memo: 週刊ヤングマジンの名作
+  author: 有楽彰展
